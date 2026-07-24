@@ -1,14 +1,26 @@
 package com.example.proyectotheproyect;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectotheproyect.db.PacienteDAO;
+import com.example.proyectotheproyect.modelo.PacienteConDoctor;
+
+import java.util.List;
 
 public class VerPacientesActivity extends AppCompatActivity {
+
+    private RecyclerView rvPacientes;
+    private TextView tvSinPacientes;
+    private PacienteDAO pacienteDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +32,30 @@ public class VerPacientesActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        rvPacientes = findViewById(R.id.rvPacientes);
+        tvSinPacientes = findViewById(R.id.tvSinPacientes);
+
+        rvPacientes.setLayoutManager(new LinearLayoutManager(this));
+        pacienteDAO = new PacienteDAO(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarPacientes();
+    }
+
+    private void cargarPacientes() {
+        List<PacienteConDoctor> lista = pacienteDAO.obtenerTodosConDoctor();
+
+        if (lista.isEmpty()) {
+            tvSinPacientes.setVisibility(TextView.VISIBLE);
+            rvPacientes.setVisibility(TextView.GONE);
+        } else {
+            tvSinPacientes.setVisibility(TextView.GONE);
+            rvPacientes.setVisibility(TextView.VISIBLE);
+            rvPacientes.setAdapter(new PacienteAdapter(lista));
+        }
     }
 }

@@ -1,64 +1,86 @@
 package com.example.proyectotheproyect;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConsultaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import java.util.Calendar;
+import java.util.Locale;
+
 public class ConsultaFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText etMotivoConsulta;
+    private TextView tvHoraEntrada, tvHoraSalida;
+    private Button btnSeleccionarHoraSalida;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String horaEntrada = "";
+    private String horaSalida = "";
 
     public ConsultaFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ConsultaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ConsultaFragment newInstance(String param1, String param2) {
-        ConsultaFragment fragment = new ConsultaFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        // Constructor vacío requerido
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_consulta, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        etMotivoConsulta = view.findViewById(R.id.etMotivoConsulta);
+        tvHoraEntrada = view.findViewById(R.id.tvHoraEntrada);
+        tvHoraSalida = view.findViewById(R.id.tvHoraSalida);
+        btnSeleccionarHoraSalida = view.findViewById(R.id.btnSeleccionarHoraSalida);
+
+        // Hora de entrada = hora actual, automática
+        Calendar ahora = Calendar.getInstance();
+        horaEntrada = String.format(Locale.getDefault(), "%02d:%02d",
+                ahora.get(Calendar.HOUR_OF_DAY), ahora.get(Calendar.MINUTE));
+        tvHoraEntrada.setText(horaEntrada);
+
+        btnSeleccionarHoraSalida.setOnClickListener(v -> mostrarSelectorHora());
+    }
+
+    private void mostrarSelectorHora() {
+        Calendar c = Calendar.getInstance();
+        TimePickerDialog dialog = new TimePickerDialog(
+                requireContext(),
+                (view, hourOfDay, minute) -> {
+                    horaSalida = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+                    tvHoraSalida.setText(horaSalida);
+                },
+                c.get(Calendar.HOUR_OF_DAY),
+                c.get(Calendar.MINUTE),
+                true
+        );
+        dialog.show();
+    }
+
+    public String getMotivo() {
+        return etMotivoConsulta.getText().toString().trim();
+    }
+
+    public String getHoraEntrada() {
+        return horaEntrada;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public boolean isHoraSalidaSeleccionada() {
+        return horaSalida != null && !horaSalida.isEmpty();
     }
 }
