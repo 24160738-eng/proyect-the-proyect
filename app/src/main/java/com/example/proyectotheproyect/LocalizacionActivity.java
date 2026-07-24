@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ public class LocalizacionActivity extends AppCompatActivity {
     private static final int CODIGO_PERMISO_UBICACION = 200;
 
     private TextView tvEstadoUbicacion, tvCoordX, tvCoordY, tvPrecision;
-    private Button btnObtenerUbicacion;
+    private Button btnObtenerUbicacion, btnIrGuardarPaciente, btnVolverWifi;
 
     private FusedLocationProviderClient clienteUbicacion;
     private LocationCallback locationCallback;
@@ -53,6 +54,8 @@ public class LocalizacionActivity extends AppCompatActivity {
         tvCoordY = findViewById(R.id.tvCoordY);
         tvPrecision = findViewById(R.id.tvPrecision);
         btnObtenerUbicacion = findViewById(R.id.btnObtenerUbicacion);
+        btnIrGuardarPaciente = findViewById(R.id.btnIrGuardarPaciente);
+        btnVolverWifi = findViewById(R.id.btnVolverWifi);
 
         clienteUbicacion = LocationServices.getFusedLocationProviderClient(this);
 
@@ -77,6 +80,15 @@ public class LocalizacionActivity extends AppCompatActivity {
             } else {
                 verificarPermisoYEmpezar();
             }
+        });
+
+        btnIrGuardarPaciente.setOnClickListener(v -> {
+            startActivity(new Intent(LocalizacionActivity.this, GuardarPacienteActivity.class));
+        });
+
+        btnVolverWifi.setOnClickListener(v -> {
+            startActivity(new Intent(LocalizacionActivity.this, WifiInfoActivity.class));
+            finish();
         });
     }
 

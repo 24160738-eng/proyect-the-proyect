@@ -9,6 +9,7 @@ import android.text.format.Formatter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ public class WifiInfoActivity extends AppCompatActivity {
     private static final int CODIGO_PERMISO_UBICACION = 100;
 
     private TextView tvSsid, tvBssid, tvIp, tvVelocidad, tvSenal, tvFrecuencia;
-    private Button btnRefrescarWifi;
+    private Button btnRefrescarWifi, btnIrLocalizacion;
 
     private WifiManager wifiManager;
 
@@ -46,10 +47,15 @@ public class WifiInfoActivity extends AppCompatActivity {
         tvSenal = findViewById(R.id.tvSenal);
         tvFrecuencia = findViewById(R.id.tvFrecuencia);
         btnRefrescarWifi = findViewById(R.id.btnRefrescarWifi);
+        btnIrLocalizacion = findViewById(R.id.btnIrLocalizacion);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
 
         btnRefrescarWifi.setOnClickListener(v -> verificarPermisoYMostrarInfo());
+
+        btnIrLocalizacion.setOnClickListener(v -> {
+            startActivity(new Intent(WifiInfoActivity.this, LocalizacionActivity.class));
+        });
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class GuardarPacienteActivity extends AppCompatActivity {
 
     private EditText etNombrePaciente, etApellidoPaterno, etApellidoMaterno, etEdadPaciente, etPeso;
     private TextView tvFechaNacimiento;
-    private Button btnSeleccionarFechaNacimiento, btnGuardarPaciente;
+    private Button btnSeleccionarFechaNacimiento, btnGuardarPaciente, btnVolverLocalizacion, btnIrVerPacientes;
     private Spinner spinnerGenero, spinnerDoctor;
 
     private ConsultaFragment consultaFragment;
@@ -72,6 +73,8 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento);
         btnSeleccionarFechaNacimiento = findViewById(R.id.btnSeleccionarFechaNacimiento);
         btnGuardarPaciente = findViewById(R.id.btnGuardarPaciente);
+        btnVolverLocalizacion = findViewById(R.id.btnVolverLocalizacion);
+        btnIrVerPacientes = findViewById(R.id.btnIrVerPacientes);
         spinnerGenero = findViewById(R.id.spinnerGenero);
         spinnerDoctor = findViewById(R.id.spinnerDoctor);
 
@@ -86,6 +89,14 @@ public class GuardarPacienteActivity extends AppCompatActivity {
 
         btnSeleccionarFechaNacimiento.setOnClickListener(v -> mostrarSelectorFecha());
         btnGuardarPaciente.setOnClickListener(v -> guardarTodo());
+
+        btnVolverLocalizacion.setOnClickListener(v -> {
+            startActivity(new Intent(GuardarPacienteActivity.this, LocalizacionActivity.class));
+        });
+
+        btnIrVerPacientes.setOnClickListener(v -> {
+            startActivity(new Intent(GuardarPacienteActivity.this, VerPacientesActivity.class));
+        });
     }
 
     private void configurarSpinnerGenero() {

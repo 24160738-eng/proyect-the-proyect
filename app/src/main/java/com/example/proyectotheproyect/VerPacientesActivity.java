@@ -15,11 +15,15 @@ import com.example.proyectotheproyect.db.PacienteDAO;
 import com.example.proyectotheproyect.modelo.PacienteConDoctor;
 
 import java.util.List;
+import android.content.Intent;
+import android.widget.Button;
 
 public class VerPacientesActivity extends AppCompatActivity {
 
     private RecyclerView rvPacientes;
     private TextView tvSinPacientes;
+
+    private Button btnVolverGuardarPaciente, btnIrVerTablas;
     private PacienteDAO pacienteDAO;
 
     @Override
@@ -35,6 +39,16 @@ public class VerPacientesActivity extends AppCompatActivity {
 
         rvPacientes = findViewById(R.id.rvPacientes);
         tvSinPacientes = findViewById(R.id.tvSinPacientes);
+        btnVolverGuardarPaciente = findViewById(R.id.btnVolverGuardarPaciente);
+        btnIrVerTablas = findViewById(R.id.btnIrVerTablas);
+
+        btnVolverGuardarPaciente.setOnClickListener(v -> {
+            startActivity(new Intent(VerPacientesActivity.this, GuardarPacienteActivity.class));
+        });
+
+        btnIrVerTablas.setOnClickListener(v -> {
+            startActivity(new Intent(VerPacientesActivity.this, VerTablasActivity.class));
+        });
 
         rvPacientes.setLayoutManager(new LinearLayoutManager(this));
         pacienteDAO = new PacienteDAO(this);

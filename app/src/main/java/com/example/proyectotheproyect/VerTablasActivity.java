@@ -1,5 +1,7 @@
 package com.example.proyectotheproyect;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.AdapterView;
@@ -7,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import android.content.Intent;
+import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -22,6 +25,7 @@ import com.example.proyectotheproyect.db.TablaDAO;
 public class VerTablasActivity extends AppCompatActivity {
 
     private Spinner spinnerTablas;
+    private Button btnVolverVerPacientes;
     private LinearLayout layoutEncabezados;
     private RecyclerView rvContenidoTabla;
     private TextView tvTablaVacia;
@@ -57,6 +61,12 @@ public class VerTablasActivity extends AppCompatActivity {
         layoutEncabezados = findViewById(R.id.layoutEncabezados);
         rvContenidoTabla = findViewById(R.id.rvContenidoTabla);
         tvTablaVacia = findViewById(R.id.tvTablaVacia);
+
+        btnVolverVerPacientes = findViewById(R.id.btnVolverVerPacientes);
+        btnVolverVerPacientes.setOnClickListener(v -> {
+            startActivity(new Intent(VerTablasActivity.this, VerPacientesActivity.class));
+            finish();
+        });
 
         rvContenidoTabla.setLayoutManager(new LinearLayoutManager(this));
         tablaDAO = new TablaDAO(this);
