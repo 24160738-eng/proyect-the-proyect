@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".WifiInfoActivity">
+
+    <TextView
+        android:id="@+id/tvTituloWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información de la red WiFi"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- SSID -->
+    <TextView
+        android:id="@+id/lblSsid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SSID:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloWifi"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:id="@+id/tvSsid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblSsid"
+        app:layout_constraintStart_toEndOf="@id/lblSsid"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- BSSID -->
+    <TextView
+        android:id="@+id/lblBssid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BSSID:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblSsid"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvBssid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblBssid"
+        app:layout_constraintStart_toEndOf="@id/lblBssid"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Dirección IP -->
+    <TextView
+        android:id="@+id/lblIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dirección IP:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblBssid"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvIp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblIp"
+        app:layout_constraintStart_toEndOf="@id/lblIp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Velocidad de enlace -->
+    <TextView
+        android:id="@+id/lblVelocidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Velocidad (Mbps):"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblIp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvVelocidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblVelocidad"
+        app:layout_constraintStart_toEndOf="@id/lblVelocidad"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Fuerza de señal -->
+    <TextView
+        android:id="@+id/lblSenal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fuerza de señal (dBm):"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblVelocidad"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvSenal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblSenal"
+        app:layout_constraintStart_toEndOf="@id/lblSenal"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Frecuencia (opcional, pero útil) -->
+    <TextView
+        android:id="@+id/lblFrecuencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frecuencia (MHz):"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblSenal"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvFrecuencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblFrecuencia"
+        app:layout_constraintStart_toEndOf="@id/lblFrecuencia"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Botón refrescar -->
+    <Button
+        android:id="@+id/btnRefrescarWifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Actualizar información"
+        app:layout_constraintTop_toBottomOf="@id/lblFrecuencia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

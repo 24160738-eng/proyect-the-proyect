@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    tools:context=".ConsultaFragment">
+
+    <!-- Motivo de la consulta -->
+    <EditText
+        android:id="@+id/etMotivoConsulta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Motivo de la consulta"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Hora de entrada -->
+    <TextView
+        android:id="@+id/lblHoraEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora de entrada:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/etMotivoConsulta"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvHoraEntrada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="--:--"
+        app:layout_constraintTop_toTopOf="@id/lblHoraEntrada"
+        app:layout_constraintStart_toEndOf="@id/lblHoraEntrada"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Hora de salida -->
+    <TextView
+        android:id="@+id/lblHoraSalida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora de salida:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblHoraEntrada"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvHoraSalida"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="No seleccionada"
+        app:layout_constraintTop_toTopOf="@id/lblHoraSalida"
+        app:layout_constraintStart_toEndOf="@id/lblHoraSalida"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <Button
+        android:id="@+id/btnSeleccionarHoraSalida"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar hora de salida"
+        app:layout_constraintTop_toBottomOf="@id/lblHoraSalida"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

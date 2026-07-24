@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".LocalizacionActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloLocalizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ubicación en tiempo real"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Estado (buscando ubicación / actualizado) -->
+    <TextView
+        android:id="@+id/tvEstadoUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esperando ubicación..."
+        android:textSize="13sp"
+        android:textColor="#888888"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloLocalizacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Coordenada X (Latitud) -->
+    <TextView
+        android:id="@+id/lblCoordX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordenada X (Latitud):"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvEstadoUbicacion"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="64dp"/>
+
+    <TextView
+        android:id="@+id/tvCoordX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblCoordX"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Coordenada Y (Longitud) -->
+    <TextView
+        android:id="@+id/lblCoordY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordenada Y (Longitud):"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvCoordX"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/tvCoordY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/lblCoordY"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Precisión (opcional, útil como dato extra) -->
+    <TextView
+        android:id="@+id/lblPrecision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precisión (metros):"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvCoordY"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/tvPrecision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"
+        app:layout_constraintTop_toTopOf="@id/lblPrecision"
+        app:layout_constraintStart_toEndOf="@id/lblPrecision"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Botón obtener ubicación -->
+    <Button
+        android:id="@+id/btnObtenerUbicacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Obtener ubicación"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
