@@ -30,8 +30,8 @@
         android:text="No hay pacientes registrados todavía"
         android:textColor="#888888"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloPacientes"
+        app:layout_constraintBottom_toTopOf="@id/btnVolverGuardarPaciente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -43,8 +43,31 @@
         app:layout_constraintTop_toBottomOf="@id/tvTituloPacientes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnVolverGuardarPaciente"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         tools:listitem="@layout/item_paciente" />
+
+    <!-- Botón regresar a Guardar Paciente -->
+    <Button
+        android:id="@+id/btnVolverGuardarPaciente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Regresar a Guardar Paciente"
+        app:layout_constraintBottom_toTopOf="@id/btnIrVerTablas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Botón ir a Ver Tablas -->
+    <Button
+        android:id="@+id/btnIrVerTablas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ver todas las tablas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

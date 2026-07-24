@@ -101,9 +101,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Obtener ubicación"
+        app:layout_constraintTop_toBottomOf="@id/lblPrecision"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <Button
+        android:id="@+id/btnIrGuardarPaciente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ir a Guardar Paciente"
+        app:layout_constraintTop_toBottomOf="@id/btnObtenerUbicacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btnVolverWifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Regresar a WiFi Info"
+        app:layout_constraintTop_toBottomOf="@id/btnIrGuardarPaciente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

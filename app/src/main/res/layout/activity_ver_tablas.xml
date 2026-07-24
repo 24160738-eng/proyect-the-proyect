@@ -109,8 +109,20 @@
         app:layout_constraintTop_toBottomOf="@id/layoutEncabezados"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnVolverVerPacientes"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
         tools:listitem="@layout/item_fila_tabla" />
+
+    <!-- Botón regresar a Ver Pacientes -->
+    <Button
+        android:id="@+id/btnVolverVerPacientes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Regresar a Ver Pacientes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

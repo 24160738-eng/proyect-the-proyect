@@ -190,7 +190,27 @@
             app:layout_constraintTop_toBottomOf="@id/frameConsulta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="28dp" />
+
+        <Button
+            android:id="@+id/btnVolverLocalizacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Regresar a Localización"
+            app:layout_constraintTop_toBottomOf="@id/btnGuardarPaciente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnIrVerPacientes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ver pacientes"
+            app:layout_constraintTop_toBottomOf="@id/btnVolverLocalizacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="24dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
