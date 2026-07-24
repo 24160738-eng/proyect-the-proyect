@@ -36,24 +36,100 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp" />
 
+        <!-- Apellido paterno -->
+        <EditText
+            android:id="@+id/etApellidoPaterno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Apellido paterno"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@id/etNombrePaciente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <!-- Apellido materno -->
+        <EditText
+            android:id="@+id/etApellidoMaterno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Apellido materno"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@id/etApellidoPaterno"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
+
         <EditText
             android:id="@+id/etEdadPaciente"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Edad"
             android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@id/etNombrePaciente"
+            app:layout_constraintTop_toBottomOf="@id/etApellidoMaterno"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <EditText
-            android:id="@+id/etTelefonoPaciente"
+        <!-- Fecha de nacimiento -->
+        <TextView
+            android:id="@+id/lblFechaNacimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de nacimiento:"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/etEdadPaciente"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvFechaNacimiento"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            app:layout_constraintTop_toBottomOf="@id/etEdadPaciente"
+            android:text="No seleccionada"
+            app:layout_constraintTop_toTopOf="@id/lblFechaNacimiento"
+            app:layout_constraintStart_toEndOf="@id/lblFechaNacimiento"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/btnSeleccionarFechaNacimiento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar fecha"
+            app:layout_constraintTop_toBottomOf="@id/lblFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Género -->
+        <TextView
+            android:id="@+id/lblGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Género:"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/btnSeleccionarFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerGenero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lblGenero"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Peso -->
+        <EditText
+            android:id="@+id/etPeso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Peso (kg)"
+            android:inputType="numberDecimal"
+            app:layout_constraintTop_toBottomOf="@id/spinnerGenero"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
@@ -64,7 +140,7 @@
             android:layout_height="wrap_content"
             android:text="Doctor asignado:"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/etTelefonoPaciente"
+            app:layout_constraintTop_toBottomOf="@id/etPeso"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp" />
 
