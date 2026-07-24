@@ -60,9 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             tvErrorLogin.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "Bienvenido " + usuario, Toast.LENGTH_SHORT).show();
 
-            // TODO: cuando tengan un menú principal, cambien VerPacientesActivity
-            // por la Activity que sirva de menú/inicio después del login.
-            Intent intent = new Intent(LoginActivity.this, VerPacientesActivity.class);
+            Intent intent = new Intent(LoginActivity.this, WifiInfoActivity.class);
             startActivity(intent);
             finish();
         } else {
