@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
@@ -20,7 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- SSID -->
     <TextView
         android:id="@+id/lblSsid"
         android:layout_width="wrap_content"
@@ -41,7 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- BSSID -->
     <TextView
         android:id="@+id/lblBssid"
         android:layout_width="wrap_content"
@@ -62,7 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- Dirección IP -->
     <TextView
         android:id="@+id/lblIp"
         android:layout_width="wrap_content"
@@ -83,7 +81,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- Velocidad de enlace -->
     <TextView
         android:id="@+id/lblVelocidad"
         android:layout_width="wrap_content"
@@ -104,7 +101,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- Fuerza de señal -->
     <TextView
         android:id="@+id/lblSenal"
         android:layout_width="wrap_content"
@@ -125,7 +121,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- Frecuencia (opcional, pero útil) -->
     <TextView
         android:id="@+id/lblFrecuencia"
         android:layout_width="wrap_content"
@@ -146,7 +141,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"/>
 
-    <!-- Botón refrescar -->
     <Button
         android:id="@+id/btnRefrescarWifi"
         android:layout_width="0dp"

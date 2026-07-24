@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
     tools:context=".LocalizacionActivity">
 
-    <!-- Título -->
     <TextView
         android:id="@+id/tvTituloLocalizacion"
         android:layout_width="wrap_content"
@@ -21,7 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- Estado (buscando ubicación / actualizado) -->
     <TextView
         android:id="@+id/tvEstadoUbicacion"
         android:layout_width="wrap_content"
@@ -34,7 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <!-- Coordenada X (Latitud) -->
     <TextView
         android:id="@+id/lblCoordX"
         android:layout_width="wrap_content"
@@ -57,7 +55,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="4dp"/>
 
-    <!-- Coordenada Y (Longitud) -->
     <TextView
         android:id="@+id/lblCoordY"
         android:layout_width="wrap_content"
@@ -80,7 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="4dp"/>
 
-    <!-- Precisión (opcional, útil como dato extra) -->
     <TextView
         android:id="@+id/lblPrecision"
         android:layout_width="wrap_content"
@@ -100,7 +96,6 @@
         app:layout_constraintStart_toEndOf="@id/lblPrecision"
         android:layout_marginStart="8dp"/>
 
-    <!-- Botón obtener ubicación -->
     <Button
         android:id="@+id/btnObtenerUbicacion"
         android:layout_width="0dp"

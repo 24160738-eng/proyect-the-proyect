@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -13,7 +14,6 @@
         android:padding="24dp"
         tools:context=".GuardarPacienteActivity">
 
-        <!-- Título -->
         <TextView
             android:id="@+id/tvTituloPaciente"
             android:layout_width="wrap_content"
@@ -25,7 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Nombre -->
         <EditText
             android:id="@+id/etNombrePaciente"
             android:layout_width="0dp"
@@ -37,7 +36,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp" />
 
-        <!-- Edad -->
         <EditText
             android:id="@+id/etEdadPaciente"
             android:layout_width="0dp"
@@ -49,7 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <!-- Teléfono -->
         <EditText
             android:id="@+id/etTelefonoPaciente"
             android:layout_width="0dp"
@@ -61,7 +58,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <!-- Doctor (spinner con la lista de doctores) -->
         <TextView
             android:id="@+id/lblDoctor"
             android:layout_width="wrap_content"
@@ -81,7 +77,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp" />
 
-        <!-- Separador visual -->
         <View
             android:id="@+id/divider1"
             android:layout_width="0dp"
@@ -103,7 +98,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp" />
 
-        <!-- Contenedor del fragment de consulta -->
         <FrameLayout
             android:id="@+id/frameConsulta"
             android:layout_width="0dp"
@@ -113,7 +107,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <!-- Botón guardar -->
         <Button
             android:id="@+id/btnGuardarPaciente"
             android:layout_width="0dp"
