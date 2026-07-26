@@ -36,9 +36,8 @@ public class GuardarPacienteActivity extends AppCompatActivity {
 
     private EditText etNombrePaciente, etApellidoPaterno, etApellidoMaterno, etEdadPaciente, etPeso;
     private TextView tvFechaNacimiento;
-    private Button btnSeleccionarFechaNacimiento, btnGuardarPaciente, btnVolverLocalizacion, btnIrVerPacientes;
+    private Button btnSeleccionarFechaNacimiento, btnGuardarPaciente, btnVolverMenu;
     private Spinner spinnerGenero, spinnerDoctor;
-
     private ConsultaFragment consultaFragment;
 
     private PacienteDAO pacienteDAO;
@@ -73,11 +72,8 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento);
         btnSeleccionarFechaNacimiento = findViewById(R.id.btnSeleccionarFechaNacimiento);
         btnGuardarPaciente = findViewById(R.id.btnGuardarPaciente);
-        btnVolverLocalizacion = findViewById(R.id.btnVolverLocalizacion);
-        btnIrVerPacientes = findViewById(R.id.btnIrVerPacientes);
         spinnerGenero = findViewById(R.id.spinnerGenero);
         spinnerDoctor = findViewById(R.id.spinnerDoctor);
-
         pacienteDAO = new PacienteDAO(this);
         consultaDAO = new ConsultaDAO(this);
         egresoDAO = new EgresoDAO(this);
@@ -90,12 +86,10 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         btnSeleccionarFechaNacimiento.setOnClickListener(v -> mostrarSelectorFecha());
         btnGuardarPaciente.setOnClickListener(v -> guardarTodo());
 
-        btnVolverLocalizacion.setOnClickListener(v -> {
-            startActivity(new Intent(GuardarPacienteActivity.this, LocalizacionActivity.class));
-        });
-
-        btnIrVerPacientes.setOnClickListener(v -> {
-            startActivity(new Intent(GuardarPacienteActivity.this, VerPacientesActivity.class));
+        btnVolverMenu = findViewById(R.id.btnVolverMenu);
+        btnVolverMenu.setOnClickListener(v -> {
+            startActivity(new Intent(GuardarPacienteActivity.this, MenuActivity.class));
+            finish();
         });
     }
 
@@ -122,6 +116,7 @@ public class GuardarPacienteActivity extends AppCompatActivity {
                 .replace(R.id.frameConsulta, consultaFragment)
                 .commit();
     }
+
 
     private void mostrarSelectorFecha() {
         Calendar c = Calendar.getInstance();

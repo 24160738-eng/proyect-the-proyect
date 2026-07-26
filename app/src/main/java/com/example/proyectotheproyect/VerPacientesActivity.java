@@ -22,8 +22,7 @@ public class VerPacientesActivity extends AppCompatActivity {
 
     private RecyclerView rvPacientes;
     private TextView tvSinPacientes;
-
-    private Button btnVolverGuardarPaciente, btnIrVerTablas;
+    private Button btnVolverMenu;
     private PacienteDAO pacienteDAO;
 
     @Override
@@ -37,18 +36,14 @@ public class VerPacientesActivity extends AppCompatActivity {
             return insets;
         });
 
+        btnVolverMenu = findViewById(R.id.btnVolverMenu);
+        btnVolverMenu.setOnClickListener(v -> {
+            startActivity(new Intent(VerPacientesActivity.this, MenuActivity.class));
+            finish();
+        });
+
         rvPacientes = findViewById(R.id.rvPacientes);
         tvSinPacientes = findViewById(R.id.tvSinPacientes);
-        btnVolverGuardarPaciente = findViewById(R.id.btnVolverGuardarPaciente);
-        btnIrVerTablas = findViewById(R.id.btnIrVerTablas);
-
-        btnVolverGuardarPaciente.setOnClickListener(v -> {
-            startActivity(new Intent(VerPacientesActivity.this, GuardarPacienteActivity.class));
-        });
-
-        btnIrVerTablas.setOnClickListener(v -> {
-            startActivity(new Intent(VerPacientesActivity.this, VerTablasActivity.class));
-        });
 
         rvPacientes.setLayoutManager(new LinearLayoutManager(this));
         pacienteDAO = new PacienteDAO(this);

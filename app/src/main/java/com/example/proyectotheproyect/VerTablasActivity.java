@@ -25,10 +25,10 @@ import com.example.proyectotheproyect.db.TablaDAO;
 public class VerTablasActivity extends AppCompatActivity {
 
     private Spinner spinnerTablas;
-    private Button btnVolverVerPacientes;
     private LinearLayout layoutEncabezados;
     private RecyclerView rvContenidoTabla;
     private TextView tvTablaVacia;
+    private Button btnVolverMenu;
 
     private TablaDAO tablaDAO;
 
@@ -62,9 +62,9 @@ public class VerTablasActivity extends AppCompatActivity {
         rvContenidoTabla = findViewById(R.id.rvContenidoTabla);
         tvTablaVacia = findViewById(R.id.tvTablaVacia);
 
-        btnVolverVerPacientes = findViewById(R.id.btnVolverVerPacientes);
-        btnVolverVerPacientes.setOnClickListener(v -> {
-            startActivity(new Intent(VerTablasActivity.this, VerPacientesActivity.class));
+        btnVolverMenu = findViewById(R.id.btnVolverMenu);
+        btnVolverMenu.setOnClickListener(v -> {
+            startActivity(new Intent(VerTablasActivity.this, MenuActivity.class));
             finish();
         });
 

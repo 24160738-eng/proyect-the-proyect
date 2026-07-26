@@ -107,21 +107,11 @@
         android:layout_marginTop="40dp"/>
 
     <Button
-        android:id="@+id/btnIrGuardarPaciente"
+        android:id="@+id/btnVolverMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ir a Guardar Paciente"
+        android:text="Regresar al menú"
         app:layout_constraintTop_toBottomOf="@id/btnObtenerUbicacion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
-
-    <Button
-        android:id="@+id/btnVolverWifi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Regresar a WiFi Info"
-        app:layout_constraintTop_toBottomOf="@id/btnIrGuardarPaciente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

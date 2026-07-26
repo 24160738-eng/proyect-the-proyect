@@ -30,7 +30,8 @@ public class LocalizacionActivity extends AppCompatActivity {
     private static final int CODIGO_PERMISO_UBICACION = 200;
 
     private TextView tvEstadoUbicacion, tvCoordX, tvCoordY, tvPrecision;
-    private Button btnObtenerUbicacion, btnIrGuardarPaciente, btnVolverWifi;
+    private Button btnObtenerUbicacion;
+    private Button btnVolverMenu;
 
     private FusedLocationProviderClient clienteUbicacion;
     private LocationCallback locationCallback;
@@ -54,8 +55,6 @@ public class LocalizacionActivity extends AppCompatActivity {
         tvCoordY = findViewById(R.id.tvCoordY);
         tvPrecision = findViewById(R.id.tvPrecision);
         btnObtenerUbicacion = findViewById(R.id.btnObtenerUbicacion);
-        btnIrGuardarPaciente = findViewById(R.id.btnIrGuardarPaciente);
-        btnVolverWifi = findViewById(R.id.btnVolverWifi);
 
         clienteUbicacion = LocationServices.getFusedLocationProviderClient(this);
 
@@ -74,21 +73,18 @@ public class LocalizacionActivity extends AppCompatActivity {
             }
         };
 
+        btnVolverMenu = findViewById(R.id.btnVolverMenu);
+        btnVolverMenu.setOnClickListener(v -> {
+            startActivity(new Intent(LocalizacionActivity.this, MenuActivity.class));
+            finish();
+        });
+
         btnObtenerUbicacion.setOnClickListener(v -> {
             if (actualizacionesActivas) {
                 detenerActualizaciones();
             } else {
                 verificarPermisoYEmpezar();
             }
-        });
-
-        btnIrGuardarPaciente.setOnClickListener(v -> {
-            startActivity(new Intent(LocalizacionActivity.this, GuardarPacienteActivity.class));
-        });
-
-        btnVolverWifi.setOnClickListener(v -> {
-            startActivity(new Intent(LocalizacionActivity.this, WifiInfoActivity.class));
-            finish();
         });
     }
 

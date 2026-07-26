@@ -25,7 +25,7 @@ public class WifiInfoActivity extends AppCompatActivity {
     private static final int CODIGO_PERMISO_UBICACION = 100;
 
     private TextView tvSsid, tvBssid, tvIp, tvVelocidad, tvSenal, tvFrecuencia;
-    private Button btnRefrescarWifi, btnIrLocalizacion;
+    private Button btnRefrescarWifi, btnVolverMenu;
 
     private WifiManager wifiManager;
 
@@ -47,14 +47,15 @@ public class WifiInfoActivity extends AppCompatActivity {
         tvSenal = findViewById(R.id.tvSenal);
         tvFrecuencia = findViewById(R.id.tvFrecuencia);
         btnRefrescarWifi = findViewById(R.id.btnRefrescarWifi);
-        btnIrLocalizacion = findViewById(R.id.btnIrLocalizacion);
+        btnVolverMenu = findViewById(R.id.btnVolverMenu);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
 
         btnRefrescarWifi.setOnClickListener(v -> verificarPermisoYMostrarInfo());
 
-        btnIrLocalizacion.setOnClickListener(v -> {
-            startActivity(new Intent(WifiInfoActivity.this, LocalizacionActivity.class));
+        btnVolverMenu.setOnClickListener(v -> {
+            startActivity(new Intent(WifiInfoActivity.this, MenuActivity.class));
+            finish();
         });
     }
 
