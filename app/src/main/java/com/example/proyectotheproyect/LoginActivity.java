@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             tvErrorLogin.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "Bienvenido " + usuario, Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(LoginActivity.this, WifiInfoActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         } else {
