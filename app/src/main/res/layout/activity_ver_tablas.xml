@@ -21,6 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
+
     <TextView
         android:id="@+id/lblSeleccionTabla"
         android:layout_width="wrap_content"
