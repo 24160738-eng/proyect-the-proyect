@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/bg_frutiger_gradient"
     tools:context=".VerPacientesActivity">
 
     <!-- Título -->
@@ -17,6 +18,7 @@
         android:text="Pacientes registrados"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/frutiger_azul_profundo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +56,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Regresar al menú"
+        android:background="@drawable/btn_frutiger"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="frutiger_cian">#4FC3F7</color>
+    <color name="frutiger_azul_profundo">#0288D1</color>
+    <color name="frutiger_blanco_brillo">#FFFFFF</color>
+    <color name="frutiger_verde_agua">#81D4FA</color>
 </resources>
