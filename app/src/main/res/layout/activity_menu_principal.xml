@@ -1,100 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    tools:context=".MenuActivity">
+    android:fillViewport="true">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvTituloMenu"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hospital App"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp"/>
+        android:padding="24dp"
+        tools:context=".MenuActivity">
 
-    <TextView
-        android:id="@+id/tvSubtituloMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menú principal"
-        android:textSize="14sp"
-        android:textColor="#888888"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"/>
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTituloMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hospital App"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="48dp"/>
 
-    <!-- Botones de navegación -->
-    <Button
-        android:id="@+id/btnMenuWifiInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Información del WiFi"
-        app:layout_constraintTop_toBottomOf="@id/tvSubtituloMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp"/>
+        <TextView
+            android:id="@+id/tvSubtituloMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menú principal"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            app:layout_constraintTop_toBottomOf="@id/tvTituloMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp"/>
 
-    <Button
-        android:id="@+id/btnMenuLocalizacion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Ubicación en tiempo real"
-        app:layout_constraintTop_toBottomOf="@id/btnMenuWifiInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        <!-- Botones de navegación -->
+        <Button
+            android:id="@+id/btnMenuWifiInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Información del WiFi"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtituloMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="48dp"/>
 
-    <Button
-        android:id="@+id/btnMenuGuardarPaciente"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Registrar paciente"
-        app:layout_constraintTop_toBottomOf="@id/btnMenuLocalizacion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        <Button
+            android:id="@+id/btnMenuLocalizacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ubicación en tiempo real"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuWifiInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/btnMenuVerPacientes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Ver pacientes"
-        app:layout_constraintTop_toBottomOf="@id/btnMenuGuardarPaciente"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        <Button
+            android:id="@+id/btnMenuGuardarPaciente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Registrar paciente"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuLocalizacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/btnMenuVerTablas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Ver todas las tablas"
-        app:layout_constraintTop_toBottomOf="@id/btnMenuVerPacientes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        <Button
+            android:id="@+id/btnMenuVerPacientes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ver pacientes"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuGuardarPaciente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
-    <!-- Cerrar sesión -->
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
-        android:backgroundTint="#D32F2F"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="32dp"/>
+        <Button
+            android:id="@+id/btnMenuVerTablas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ver todas las tablas"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuVerPacientes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Cerrar sesión -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:backgroundTint="#D32F2F"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuVerTablas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

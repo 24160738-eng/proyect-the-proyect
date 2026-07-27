@@ -1,121 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    tools:context=".LocalizacionActivity">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvTituloLocalizacion"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ubicación en tiempo real"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:padding="16dp"
+        tools:context=".LocalizacionActivity">
 
-    <TextView
-        android:id="@+id/tvEstadoUbicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esperando ubicación..."
-        android:textSize="13sp"
-        android:textColor="#888888"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloLocalizacion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/tvTituloLocalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubicación en tiempo real"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
 
-    <TextView
-        android:id="@+id/lblCoordX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coordenada X (Latitud):"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvEstadoUbicacion"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="64dp"/>
+        <TextView
+            android:id="@+id/tvEstadoUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esperando ubicación..."
+            android:textSize="12sp"
+            android:textColor="#888888"
+            app:layout_constraintTop_toBottomOf="@id/tvTituloLocalizacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp"/>
 
-    <TextView
-        android:id="@+id/tvCoordX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/lblCoordX"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="4dp"/>
+        <!-- Coordenadas en una fila compacta -->
+        <LinearLayout
+            android:id="@+id/layoutCoords"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tvEstadoUbicacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp">
 
-    <TextView
-        android:id="@+id/lblCoordY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coordenada Y (Longitud):"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvCoordX"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"/>
+            <TextView
+                android:id="@+id/tvCoordX"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="X: ---"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/tvCoordY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/lblCoordY"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="4dp"/>
+            <TextView
+                android:id="@+id/tvCoordY"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Y: ---"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/lblPrecision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Precisión (metros):"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvCoordY"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"/>
+            <TextView
+                android:id="@+id/tvPrecision"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="±--- m"
+                android:textSize="13sp"/>
 
-    <TextView
-        android:id="@+id/tvPrecision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---"
-        app:layout_constraintTop_toTopOf="@id/lblPrecision"
-        app:layout_constraintStart_toEndOf="@id/lblPrecision"
-        android:layout_marginStart="8dp"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btnObtenerUbicacion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Obtener ubicación"
-        app:layout_constraintTop_toBottomOf="@id/lblPrecision"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"/>
+        <!-- Mapa: altura fija porque WebView no funciona con 0dp dentro de ScrollView -->
+        <WebView
+            android:id="@+id/webViewMapa"
+            android:layout_width="379dp"
+            android:layout_height="330dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutCoords" />
 
-    <Button
-        android:id="@+id/btnVolverMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Regresar al menú"
-        app:layout_constraintTop_toBottomOf="@id/btnObtenerUbicacion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="24dp"/>
+        <Button
+            android:id="@+id/btnObtenerUbicacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Obtener ubicación"
+            app:layout_constraintTop_toBottomOf="@id/webViewMapa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnVolverMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Regresar al menú"
+            app:layout_constraintTop_toBottomOf="@id/btnObtenerUbicacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -24,6 +24,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
+import android.webkit.WebView;
+import android.webkit.WebSettings;
 
 public class LocalizacionActivity extends AppCompatActivity {
 
@@ -32,10 +34,10 @@ public class LocalizacionActivity extends AppCompatActivity {
     private TextView tvEstadoUbicacion, tvCoordX, tvCoordY, tvPrecision;
     private Button btnObtenerUbicacion;
     private Button btnVolverMenu;
-
     private FusedLocationProviderClient clienteUbicacion;
     private LocationCallback locationCallback;
     private LocationRequest locationRequest;
+    private WebView webViewMapa;
 
     private boolean actualizacionesActivas = false;
 
@@ -55,6 +57,9 @@ public class LocalizacionActivity extends AppCompatActivity {
         tvCoordY = findViewById(R.id.tvCoordY);
         tvPrecision = findViewById(R.id.tvPrecision);
         btnObtenerUbicacion = findViewById(R.id.btnObtenerUbicacion);
+        webViewMapa = findViewById(R.id.webViewMapa);
+        WebSettings webSettings = webViewMapa.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
         clienteUbicacion = LocationServices.getFusedLocationProviderClient(this);
 
@@ -133,9 +138,33 @@ public class LocalizacionActivity extends AppCompatActivity {
 
     private void mostrarUbicacion(Location ubicacion) {
         tvEstadoUbicacion.setText("Ubicación activa");
-        tvCoordX.setText(String.valueOf(ubicacion.getLatitude()));
-        tvCoordY.setText(String.valueOf(ubicacion.getLongitude()));
-        tvPrecision.setText(ubicacion.getAccuracy() + " m");
+        double lat = ubicacion.getLatitude();
+        double lon = ubicacion.getLongitude();
+
+        tvCoordX.setText("X: " + lat);
+        tvCoordY.setText("Y: " + lon);
+        tvPrecision.setText("±" + ubicacion.getAccuracy() + " m");
+
+        cargarMapa(lat, lon);
+    }
+
+    /*  METODO CON OPEN STREET MAP
+
+    private void cargarMapa(double lat, double lon) {
+        String url = "https://www.openstreetmap.org/export/embed.html?bbox="
+                + (lon - 0.01) + "%2C" + (lat - 0.01) + "%2C" + (lon + 0.01) + "%2C" + (lat + 0.01)
+                + "&layer=mapnik&marker=" + lat + "%2C" + lon;
+        webViewMapa.loadUrl(url);
+    }
+
+    */
+
+    private void cargarMapa(double lat, double lon) {
+        String url = "https://maps.google.com/maps?q=" + lat + "," + lon + "&z=16&output=embed";
+        String html = "<html><body style='margin:0;padding:0;'>"
+                + "<iframe src=\"" + url + "\" width=\"100%\" height=\"100%\" style=\"border:0;\"></iframe>"
+                + "</body></html>";
+        webViewMapa.loadDataWithBaseURL("https://maps.google.com", html, "text/html", "UTF-8", null);
     }
 
     @Override
