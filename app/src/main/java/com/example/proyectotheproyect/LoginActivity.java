@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.proyectotheproyect.db.UsuarioDAO;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private MediaPlayer mediaPlayer;
     private EditText etUsuario, etPassword;
     private TextView tvErrorLogin;
     private Button btnLogin;
@@ -42,6 +43,35 @@ public class LoginActivity extends AppCompatActivity {
         usuarioDAO = new UsuarioDAO(this);
 
         btnLogin.setOnClickListener(v -> intentarLogin());
+        mediaPlayer = MediaPlayer.create(this, R.raw.musica_login);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
     private void intentarLogin() {

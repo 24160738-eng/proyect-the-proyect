@@ -48,7 +48,10 @@ public class MenuActivity extends AppCompatActivity {
         btnMenuVerTablas.setOnClickListener(v ->
                 startActivity(new Intent(MenuActivity.this, VerTablasActivity.class)));
 
+        startService(new Intent(this, MusicaService.class));
+
         btnCerrarSesion.setOnClickListener(v -> {
+            stopService(new Intent(this, MusicaService.class));
             Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
