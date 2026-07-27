@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,7 +59,16 @@ public class ConsultaFragment extends Fragment {
         TimePickerDialog dialog = new TimePickerDialog(
                 requireContext(),
                 (view, hourOfDay, minute) -> {
-                    horaSalida = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+                    String horaSeleccionada = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+
+                    if (!esPosteriorAEntrada(horaSeleccionada)) {
+                        Toast.makeText(requireContext(),
+                                "La hora de salida debe ser posterior a la hora de entrada (" + horaEntrada + ")",
+                                Toast.LENGTH_LONG).show();
+                        return; // no acepta la selección
+                    }
+
+                    horaSalida = horaSeleccionada;
                     tvHoraSalida.setText(horaSalida);
                 },
                 c.get(Calendar.HOUR_OF_DAY),
@@ -66,6 +76,21 @@ public class ConsultaFragment extends Fragment {
                 true
         );
         dialog.show();
+    }
+
+    /**
+     * Compara horaSalida contra horaEntrada (ambas en formato "HH:mm").
+     */
+    private boolean esPosteriorAEntrada(String horaCandidata) {
+        int[] entrada = horaEntrada.split(":").length == 2
+                ? new int[]{Integer.parseInt(horaEntrada.split(":")[0]), Integer.parseInt(horaEntrada.split(":")[1])}
+                : new int[]{0, 0};
+        int[] salida = new int[]{Integer.parseInt(horaCandidata.split(":")[0]), Integer.parseInt(horaCandidata.split(":")[1])};
+
+        int minutosEntrada = entrada[0] * 60 + entrada[1];
+        int minutosSalida = salida[0] * 60 + salida[1];
+
+        return minutosSalida > minutosEntrada;
     }
 
     public String getMotivo() {

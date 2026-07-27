@@ -25,6 +25,7 @@ import com.example.proyectotheproyect.modelo.Consulta;
 import com.example.proyectotheproyect.modelo.Doctor;
 import com.example.proyectotheproyect.modelo.Egreso;
 import com.example.proyectotheproyect.modelo.Paciente;
+import com.example.proyectotheproyect.util.ValidacionUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -132,9 +133,10 @@ public class GuardarPacienteActivity extends AppCompatActivity {
                 c.get(Calendar.MONTH),
                 c.get(Calendar.DAY_OF_MONTH)
         );
+        // No permite seleccionar una fecha posterior a hoy
+        dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         dialog.show();
     }
-
     private void guardarTodo() {
         String nombre = etNombrePaciente.getText().toString().trim();
         String apellidoP = etApellidoPaterno.getText().toString().trim();
@@ -142,22 +144,50 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         String edadStr = etEdadPaciente.getText().toString().trim();
         String pesoStr = etPeso.getText().toString().trim();
 
-        if (nombre.isEmpty() || apellidoP.isEmpty() || apellidoM.isEmpty()
-                || edadStr.isEmpty() || pesoStr.isEmpty()) {
-            Toast.makeText(this, "Completa todos los campos del paciente", Toast.LENGTH_SHORT).show();
+        // --- Validaciones de nombre y apellidos (solo letras) ---
+        if (!ValidacionUtils.esSoloLetras(nombre)) {
+            ValidacionUtils.marcarError(etNombrePaciente, "Solo se permiten letras");
             return;
         }
+        if (!ValidacionUtils.esSoloLetras(apellidoP)) {
+            ValidacionUtils.marcarError(etApellidoPaterno, "Solo se permiten letras");
+            return;
+        }
+        if (!ValidacionUtils.esSoloLetras(apellidoM)) {
+            ValidacionUtils.marcarError(etApellidoMaterno, "Solo se permiten letras");
+            return;
+        }
+
+        // --- Validación de edad (0 a 120 años) ---
+        if (!ValidacionUtils.esEdadValida(edadStr, 0, 120)) {
+            ValidacionUtils.marcarError(etEdadPaciente, "Edad inválida (0-120)");
+            return;
+        }
+
+        // --- Validación de peso (0.5 a 400 kg) ---
+        if (!ValidacionUtils.esPesoValido(pesoStr, 0.5, 400)) {
+            ValidacionUtils.marcarError(etPeso, "Peso inválido (0.5-400 kg)");
+            return;
+        }
+
+        // --- Fecha de nacimiento ---
         if (fechaNacimientoSeleccionada.isEmpty()) {
             Toast.makeText(this, "Selecciona la fecha de nacimiento", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (!ValidacionUtils.fechaNoEsFutura(fechaNacimientoSeleccionada)) {
+            Toast.makeText(this, "La fecha de nacimiento no puede ser futura", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (listaDoctores.isEmpty()) {
             Toast.makeText(this, "No hay doctores registrados", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // --- Datos de la consulta (Fragment) ---
         String motivo = consultaFragment.getMotivo();
-        if (motivo.isEmpty()) {
+        if (!ValidacionUtils.noVacio(motivo)) {
             Toast.makeText(this, "Escribe el motivo de la consulta", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -166,15 +196,8 @@ public class GuardarPacienteActivity extends AppCompatActivity {
             return;
         }
 
-        int edad;
-        double peso;
-        try {
-            edad = Integer.parseInt(edadStr);
-            peso = Double.parseDouble(pesoStr);
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Edad o peso inválidos", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        int edad = Integer.parseInt(edadStr);
+        double peso = Double.parseDouble(pesoStr);
 
         String genero = spinnerGenero.getSelectedItem().toString();
         Doctor doctorSeleccionado = (Doctor) spinnerDoctor.getSelectedItem();
@@ -190,17 +213,17 @@ public class GuardarPacienteActivity extends AppCompatActivity {
             return;
         }
 
-        // 2. Guardar consulta (usando el id del paciente recién insertado)
+        // 2. Guardar consulta
         Consulta consulta = new Consulta(0,
-                "Ninguna registrada",   // alergias (no capturado en el form)
-                motivo,                  // observaciones_sintomas
-                "Pendiente de diagnóstico", // diagnostico (no capturado en el form)
+                "Ninguna registrada",
+                motivo,
+                "Pendiente de diagnóstico",
                 ahora,
                 (int) idPacienteGenerado,
                 doctorSeleccionado.getIdDoctor());
         consultaDAO.insertarConsulta(consulta);
 
-        // 3. Guardar egreso (hora de salida capturada en el Fragment)
+        // 3. Guardar egreso
         Egreso egreso = new Egreso(0,
                 "Sin observaciones",
                 ahora,
