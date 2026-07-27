@@ -61,17 +61,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <EditText
-            android:id="@+id/etEdadPaciente"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Edad"
-            android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@id/etApellidoMaterno"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp" />
-
         <!-- Fecha de nacimiento -->
         <TextView
             android:id="@+id/lblFechaNacimiento"
@@ -79,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Fecha de nacimiento:"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/etEdadPaciente"
+            app:layout_constraintTop_toBottomOf="@id/etApellidoMaterno"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp" />
 
@@ -108,6 +97,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp" />
 
+        <!-- Edad calculada automáticamente -->
+        <TextView
+            android:id="@+id/lblEdadCalculada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edad:"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/btnSeleccionarFechaNacimiento"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvEdadCalculada"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="---"
+            app:layout_constraintTop_toTopOf="@id/lblEdadCalculada"
+            app:layout_constraintStart_toEndOf="@id/lblEdadCalculada"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
         <!-- Género -->
         <TextView
             android:id="@+id/lblGenero"
@@ -115,7 +125,7 @@
             android:layout_height="wrap_content"
             android:text="Género:"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/btnSeleccionarFechaNacimiento"
+            app:layout_constraintTop_toBottomOf="@id/lblEdadCalculada"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp" />
 

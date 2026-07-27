@@ -35,8 +35,9 @@ import java.util.Locale;
 
 public class GuardarPacienteActivity extends AppCompatActivity {
 
-    private EditText etNombrePaciente, etApellidoPaterno, etApellidoMaterno, etEdadPaciente, etPeso;
+    private EditText etNombrePaciente, etApellidoPaterno, etApellidoMaterno, etPeso;
     private TextView tvFechaNacimiento;
+    private TextView tvEdadCalculada;
     private Button btnSeleccionarFechaNacimiento, btnGuardarPaciente, btnVolverMenu;
     private Spinner spinnerGenero, spinnerDoctor;
     private ConsultaFragment consultaFragment;
@@ -48,6 +49,7 @@ public class GuardarPacienteActivity extends AppCompatActivity {
 
     private List<Doctor> listaDoctores = new ArrayList<>();
     private String fechaNacimientoSeleccionada = "";
+    private int edadCalculada = -1;
 
     private static final SimpleDateFormat FORMATO_FECHA =
             new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -68,9 +70,9 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         etNombrePaciente = findViewById(R.id.etNombrePaciente);
         etApellidoPaterno = findViewById(R.id.etApellidoPaterno);
         etApellidoMaterno = findViewById(R.id.etApellidoMaterno);
-        etEdadPaciente = findViewById(R.id.etEdadPaciente);
         etPeso = findViewById(R.id.etPeso);
         tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento);
+        tvEdadCalculada = findViewById(R.id.tvEdadCalculada);
         btnSeleccionarFechaNacimiento = findViewById(R.id.btnSeleccionarFechaNacimiento);
         btnGuardarPaciente = findViewById(R.id.btnGuardarPaciente);
         spinnerGenero = findViewById(R.id.spinnerGenero);
@@ -118,7 +120,6 @@ public class GuardarPacienteActivity extends AppCompatActivity {
                 .commit();
     }
 
-
     private void mostrarSelectorFecha() {
         Calendar c = Calendar.getInstance();
         DatePickerDialog dialog = new DatePickerDialog(
@@ -128,6 +129,9 @@ public class GuardarPacienteActivity extends AppCompatActivity {
                     seleccionado.set(year, month, dayOfMonth);
                     fechaNacimientoSeleccionada = FORMATO_FECHA.format(seleccionado.getTime());
                     tvFechaNacimiento.setText(fechaNacimientoSeleccionada);
+
+                    edadCalculada = calcularEdad(seleccionado);
+                    tvEdadCalculada.setText(String.valueOf(edadCalculada));
                 },
                 c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH),
@@ -137,11 +141,22 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         dialog.show();
     }
+
+    private int calcularEdad(Calendar fechaNacimiento) {
+        Calendar hoy = Calendar.getInstance();
+        int edad = hoy.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+
+        // Ajuste si todavía no ha llegado el cumpleaños este año
+        if (hoy.get(Calendar.DAY_OF_YEAR) < fechaNacimiento.get(Calendar.DAY_OF_YEAR)) {
+            edad--;
+        }
+        return edad;
+    }
+
     private void guardarTodo() {
         String nombre = etNombrePaciente.getText().toString().trim();
         String apellidoP = etApellidoPaterno.getText().toString().trim();
         String apellidoM = etApellidoMaterno.getText().toString().trim();
-        String edadStr = etEdadPaciente.getText().toString().trim();
         String pesoStr = etPeso.getText().toString().trim();
 
         // --- Validaciones de nombre y apellidos (solo letras) ---
@@ -155,12 +170,6 @@ public class GuardarPacienteActivity extends AppCompatActivity {
         }
         if (!ValidacionUtils.esSoloLetras(apellidoM)) {
             ValidacionUtils.marcarError(etApellidoMaterno, "Solo se permiten letras");
-            return;
-        }
-
-        // --- Validación de edad (0 a 120 años) ---
-        if (!ValidacionUtils.esEdadValida(edadStr, 0, 120)) {
-            ValidacionUtils.marcarError(etEdadPaciente, "Edad inválida (0-120)");
             return;
         }
 
@@ -180,6 +189,12 @@ public class GuardarPacienteActivity extends AppCompatActivity {
             return;
         }
 
+        // --- Validación de edad calculada (0 a 120 años) ---
+        if (edadCalculada < 0 || edadCalculada > 120) {
+            Toast.makeText(this, "La edad calculada está fuera de rango (0-120)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (listaDoctores.isEmpty()) {
             Toast.makeText(this, "No hay doctores registrados", Toast.LENGTH_SHORT).show();
             return;
@@ -196,8 +211,8 @@ public class GuardarPacienteActivity extends AppCompatActivity {
             return;
         }
 
-        int edad = Integer.parseInt(edadStr);
         double peso = Double.parseDouble(pesoStr);
+        int edad = edadCalculada;
 
         String genero = spinnerGenero.getSelectedItem().toString();
         Doctor doctorSeleccionado = (Doctor) spinnerDoctor.getSelectedItem();
